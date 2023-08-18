@@ -7,16 +7,18 @@ import { JWT_KEY } from "../utils/constant";
  // Change this to a strong secret key
 
 export const signUp = async (req: Request, res: Response) => {
-  const { username, email, firstname, lastname, password } = req.body;
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+
 
   try {
     // check that values are not empty
+
+    const { username, email, firstname, lastname, password } = req.body;
     if (!username || !email || !firstname || !lastname || !password) {
       return res.status(422).send("All fields are required");
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
     await pool.query(
       "INSERT INTO users (username, firstname, lastname, email, password) VALUES (?, ?, ?, ?, ?)",
       [username, firstname, lastname, email, hashedPassword]
