@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { setupRoutes } from './routes/accountRoutes';
 import { postRoutes } from './routes/postRoutes';
+import serverless from 'serverless-http'
 
 dotenv.config() as { parsed: { [key: string]: string } };
 
@@ -21,5 +22,5 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-export default app;
+export const handler = serverless(app);
 

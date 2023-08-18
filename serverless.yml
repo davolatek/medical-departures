@@ -4,16 +4,65 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
-
-  stage: dev
-  timeout: 15
-  region: us-east-1
-
 functions:
-  hello:
-    handler: handler.hello
+  signUp:
+    handler: dist/server.handler
     events:
-      - http: ANY /{proxy+}
       - http: ANY /
+      - http: ANY /{proxy+}
 
+  # signIn:
+  #   handler: handler.signIn
+  #   events:
+  #     - http:
+  #         path: signin
+  #         method: post
+  #         cors: true
 
+  # getUserProfile:
+  #   handler: handler.getUserProfile
+  #   events:
+  #     - http:
+  #         path: profile
+  #         method: get
+  #         cors: true
+
+  # updateUserProfile:
+  #   handler: handler.updateUserProfile
+  #   events:
+  #     - http:
+  #         path: profile
+  #         method: put
+  #         cors: true
+
+  # createPost:
+  #   handler: handler.createPost
+  #   events:
+  #     - http:
+  #         path: posts
+  #         method: post
+  #         cors: true
+
+  # updatePost:
+  #   handler: handler.updatePost
+  #   events:
+  #     - http:
+  #         path: posts/{id}
+  #         method: put
+  #         cors: true
+
+  # getPosts:
+  #   handler: handler.getPosts
+  #   events:
+  #     - http:
+  #         path: posts
+  #         method: get
+  #         cors: true
+
+  # deletePost:
+  #   handler: handler.deletePost
+  #   events:
+  #     - http:
+  #         path: posts/{id}
+  #         method: delete
+  #         cors: true
