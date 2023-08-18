@@ -1,4 +1,7 @@
 import express from 'express';
+import dotenv from 'dotenv';
+
+dotenv.config() as { parsed: { [key: string]: string } };
 
 const app = express();
 
